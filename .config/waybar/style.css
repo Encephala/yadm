@@ -1,0 +1,143 @@
+* {
+    font-family: "CaskaydiaMono Nerd Font", "Font Awesome 6 Free", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.7);
+    color: #c0caf5;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Hyprland Workspaces */
+#workspaces button {
+    padding: 0 5px;
+    color: #565f89;
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    color: #7aa2f7;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+}
+
+#workspaces button:hover {
+    background: rgba(122, 162, 247, 0.1);
+    color: #bb9af7;
+}
+
+/* Center Window Module */
+#window {
+    background-color: rgba(41, 46, 66, 0.5);
+    padding: 0 15px;
+    border-radius: 10px;
+    margin: 8px 0 4px 0;
+}
+
+/* Common Module Styling (Pill Look) */
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray,
+#idle_inhibitor,
+#custom-power {
+    padding: 0 10px;
+    margin: 8px 2px 4px 2px;
+    background-color: rgba(41, 46, 66, 0.8);
+    border-radius: 8px;
+}
+
+/* Module Specific Colors */
+#clock { color: #7aa2f7; }
+#pulseaudio { color: #e0af68; }
+#network { color: #9ece6a; }
+#network.disconnected { color: #f7768e; }
+#idle_inhibitor { color: #bb9af7; }
+#idle_inhibitor.activated { color: #7aa2f7; }
+#tray { background-color: transparent; }
+
+/* Hardware Group & Temperature */
+#cpu { color: #b4f9f8; }
+#memory { color: #bb9af7; }
+
+#temperature.cpu { color: #fb4934; }
+#temperature.gpu { color: #83a598; }
+
+/* Drawer Logic */
+#group-hardware .not-visible {
+    opacity: 0;
+}
+
+#group-hardware.expanded .not-visible,
+#group-hardware:hover .not-visible {
+    opacity: 1;
+}
+
+/* Battery States */
+#battery.charging, #battery.plugged {
+    color: #9ece6a;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f7768e;
+    color: #1a1b26;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Custom Power Button */
+#custom-power {
+    background-color: #f7768e;
+    color: #1a1b26;
+    margin-right: 8px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #c0caf5;
+        color: #1a1b26;
+    }
+}
+
+/* Power Menu Container */
+menu {
+    background-color: rgba(26, 27, 38, 0.95); /* Match bar transparency */
+    border: 1px solid rgba(122, 162, 247, 0.2);
+    border-radius: 12px;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* Individual Menu Items */
+menuitem {
+    background: transparent;
+    color: #c0caf5;
+    border-radius: 8px;
+    padding: 4px 10px;
+    transition: all 0.2s ease;
+}
+
+/* Hover/Selection state */
+menuitem:hover, menuitem:focus {
+    background-color: rgba(122, 162, 247, 0.2);
+    color: #bb9af7;
+}
+
+/* Fix for text alignment and spacing */
+menuitem label {
+    font-weight: bold;
+    padding: 5px;
+}
