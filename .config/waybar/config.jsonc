@@ -15,8 +15,8 @@
     ],
     "modules-right": [
         "idle_inhibitor",
-        "pulseaudio",
 	"group/hardware",
+        "pulseaudio",
 	"network",
         "battery",
         "clock",
