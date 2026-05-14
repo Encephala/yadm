@@ -73,4 +73,3 @@ format = "[($virtualenv )](fg:green)"
 
 [character]
 success_symbol = "[❯](fg:hl)"
-error_symbol = "[❯](fg:red)"
