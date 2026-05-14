@@ -45,6 +45,7 @@ AUR_PACKAGES=(
     gpu-usage-waybar-git
     synology-drive
     vesktop
+    tree-sitter-cli
 )
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
