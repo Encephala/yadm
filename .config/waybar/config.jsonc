@@ -37,7 +37,7 @@
         "drawer": {
             "transition-duration": 400,
             "children-class": "not-visible",
-            "transition-left-to-right": true
+            "transition-left-to-right": false
         },
         "modules": [
             "cpu",
@@ -49,7 +49,7 @@
         "drawer": {
             "transition-duration": 400,
             "children-class": "not-visible",
-            "transition-left-to-right": true
+            "transition-left-to-right": false
         },
         "modules": [
             "custom/gpu",
@@ -117,10 +117,9 @@
         "interval": 1
     },
     "custom/gpu": {
-        "exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent 2>/dev/null || echo 0",
-        "format": "{}% 󰢮",
-        "interval": 2,
-        "tooltip": false
+	"exec": "util=$(cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent 2>/dev/null || echo 0); video=$(cat /sys/class/hwmon/hwmon3/device/vcn_busy_percent 2>/dev/null || echo 0); vram_u=$(cat /sys/class/hwmon/hwmon3/device/mem_info_vram_used 2>/dev/null || echo 0); vram_t=$(cat /sys/class/hwmon/hwmon3/device/mem_info_vram_total 2>/dev/null || echo 0); pwr=$(cat /sys/class/hwmon/hwmon3/power1_average 2>/dev/null || echo 0); awk -v u=\"$util\" -v v=\"$video\" -v vu=\"$vram_u\" -v vt=\"$vram_t\" -v p=\"$pwr\" 'BEGIN { printf \"{\\\"text\\\": \\\"%s%% 󰢮\\\", \\\"tooltip\\\": \\\"3D/GFX Load: %s%%\\\\nVideo Engine: %s%%\\\\nVRAM Usage: %.2f GB / %.2f GB\\\\nPower Draw: %.1f W\\\"}\\n\", u, u, v, vu/1073741824, vt/1073741824, p/1000000 }'",
+        "return-type": "json",
+        "interval": 1
     },
     "memory": {
         "format": "{}% "
