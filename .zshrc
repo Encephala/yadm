@@ -8,6 +8,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git per-directory-history)
 
 export PATH="$PATH:$HOME/.local/bin"
+alias vim="nvim"
 
 source $ZSH/oh-my-zsh.sh
 
