@@ -1,2 +1,6 @@
+# Hyprland
 .config/hypr/hyprland-gui.conf
 .config/hypr/hyprland-local.conf
+
+# Hyprlock
+.config/hypr/hyprlock-local.conf
