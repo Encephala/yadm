@@ -15,16 +15,24 @@
     ],
     "modules-right": [
         "idle_inhibitor",
-	"group/hardware",
+        "group/hardware",
         "pulseaudio",
-	"network",
+        "network",
         "battery",
         "clock",
         "tray",
-	"custom/power"
+        "custom/power"
     ],
     // Groups configuration
     "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "group/cpu-group",
+            "group/gpu-group",
+            "memory"
+        ]
+    },
+    "group/cpu-group": {
         "orientation": "horizontal",
         "drawer": {
             "transition-duration": 400,
@@ -33,15 +41,25 @@
         },
         "modules": [
             "cpu",
-            "temperature#cpu",
-	    "temperature#gpu",
-            "memory"
+            "temperature#cpu"
+        ]
+    },
+    "group/gpu-group": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 400,
+            "children-class": "not-visible",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/gpu",
+            "temperature#gpu"
         ]
     },
     
     // Modules configuration
     "hyprland/workspaces": {
-	"all-outputs": true,
+        "all-outputs": true,
         "format": "{name}: {icon}",
         "format-icons": {
             "active": "",
@@ -91,26 +109,32 @@
         "spacing": 10
     },
     "clock": {
-	"format": "{:%Y-%m-%d %H:%M}",
+        "format": "{:%Y-%m-%d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
         "format": "{usage}% ",
-	"interval": 1
+        "interval": 1
+    },
+    "custom/gpu": {
+        "exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent 2>/dev/null || echo 0",
+        "format": "{}% 󰢮",
+        "interval": 2,
+        "tooltip": false
     },
     "memory": {
-        "format": "{}% 󰍛"
+        "format": "{}% "
     },
     "temperature#cpu": {
-	"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-	"critical-threshold": 80,
-	"format": "{temperatureC}°C CPU",
+        "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C CPU",
         "format-icons": ["", "", ""]
     },
     "temperature#gpu": {
-	"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-	"critical-threshold": 80,
-	"format": "{temperatureC}°C GPU",
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C GPU",
         "format-icons": ["", "", ""]
     },
     "battery": {
@@ -151,18 +175,18 @@
             "car": "",
             "default": ["", "", ""]
         },
-	"on-click": "wpctl set-default $(wpctl status | sed -n '/Sinks:/,/^$/p' | awk '/Ryzen/ && !/\\*/ {print $2}; /CA0132/ && !/\\*/ {print $2}' | tr -d '.')"
+        "on-click": "wpctl set-default $(wpctl status | sed -n '/Sinks:/,/^$/p' | awk '/Ryzen/ && !/\\*/ {print $2}; /CA0132/ && !/\\*/ {print $2}' | tr -d '.')"
     },
     "custom/power": {
         "format" : "⏻",
-	"tooltip": false,
-	"menu": "on-click",
-	"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-	"menu-actions": {
-	    "shutdown": "systemctl --user stop graphical-session.target && systemctl poweroff",
-	    "reboot": "systemctl --user stop graphical-session.target && systemctl reboot",
-	    "suspend": "systemctl suspend",
-	    "logout": "systemctl --user stop graphical-session.target && hyprctl dispatch exit"
-	}
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "systemctl --user stop graphical-session.target && systemctl poweroff",
+            "reboot": "systemctl --user stop graphical-session.target && systemctl reboot",
+            "suspend": "systemctl suspend",
+            "logout": "systemctl --user stop graphical-session.target && hyprctl dispatch exit"
+        }
     }
 }

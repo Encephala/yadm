@@ -44,6 +44,7 @@ window#waybar {
 #clock,
 #battery,
 #cpu,
+#custom-gpu,
 #memory,
 #temperature,
 #network,
@@ -66,21 +67,31 @@ window#waybar {
 #idle_inhibitor.activated { color: #7aa2f7; }
 #tray { background-color: transparent; }
 
-/* Hardware Group & Temperature */
+/* Hardware Group Styling */
 #cpu { color: #b4f9f8; }
+#custom-gpu { color: #73daca; } /* Teal for GPU usage */
 #memory { color: #bb9af7; }
 
-#temperature.cpu { color: #fb4934; }
-#temperature.gpu { color: #83a598; }
+/* Temperature Styling */
+#temperature.cpu { 
+    color: #f7768e; 
+    background-color: rgba(247, 118, 142, 0.1); /* Subtle red tint */
+}
+#temperature.gpu { 
+    color: #ff9e64; 
+    background-color: rgba(255, 158, 100, 0.1); /* Subtle orange tint */
+}
 
-/* Drawer Logic */
-#group-hardware .not-visible {
+/* Drawer Logic for Nested Groups */
+#cpu-group .not-visible,
+#gpu-group .not-visible {
     opacity: 0;
 }
 
-#group-hardware.expanded .not-visible,
-#group-hardware:hover .not-visible {
+#cpu-group:hover .not-visible,
+#gpu-group:hover .not-visible {
     opacity: 1;
+    transition: all 0.4s ease;
 }
 
 /* Battery States */
@@ -114,14 +125,13 @@ window#waybar {
 
 /* Power Menu Container */
 menu {
-    background-color: rgba(26, 27, 38, 0.95); /* Match bar transparency */
+    background-color: rgba(26, 27, 38, 0.95);
     border: 1px solid rgba(122, 162, 247, 0.2);
     border-radius: 12px;
     padding: 5px;
     margin: 5px;
 }
 
-/* Individual Menu Items */
 menuitem {
     background: transparent;
     color: #c0caf5;
@@ -130,13 +140,11 @@ menuitem {
     transition: all 0.2s ease;
 }
 
-/* Hover/Selection state */
 menuitem:hover, menuitem:focus {
     background-color: rgba(122, 162, 247, 0.2);
     color: #bb9af7;
 }
 
-/* Fix for text alignment and spacing */
 menuitem label {
     font-weight: bold;
     padding: 5px;
