@@ -58,5 +58,10 @@ export PATH="$PATH:$HOME/.local/bin"
 
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
+autoload -Uz add-zsh-hook
+_first_prompt=1
+_precmd_newline() { if (( _first_prompt )); then _first_prompt=0; else echo; fi }
+add-zsh-hook precmd _precmd_newline
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
