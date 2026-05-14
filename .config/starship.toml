@@ -1,0 +1,74 @@
+format = """
+[](fg:bg_panel)\
+$time\
+[](fg:bg_deep bg:bg_panel)\
+$directory\
+[](fg:bg_deep)\
+$fill\
+$line_break\
+$python\
+$character"""
+
+right_format = """
+$cmd_duration\
+$status\
+$git_branch\
+$git_status"""
+
+palette = "hyprnight"
+
+[palettes.hyprnight]
+bg_deep  = "#1a1b26"
+bg_panel = "#292e42"
+fg       = "#c0caf5"
+blue     = "#7aa2f7"
+purple   = "#bb9af7"
+green    = "#9ece6a"
+orange   = "#e0af68"
+red      = "#f7768e"
+muted    = "#565f89"
+hl       = "#00ff99"
+
+[time]
+disabled = false
+format = "[ $time ]($style)"
+style = "bg:bg_panel fg:blue"
+time_format = "%H:%M:%S"
+
+[directory]
+format = "[ $path ]($style)"
+style = "bg:bg_deep fg:fg"
+truncation_length = 4
+truncate_to_repo = false
+
+[cmd_duration]
+format = "[ $duration ](fg:muted)"
+min_time = 2_000
+show_milliseconds = false
+
+[git_branch]
+format = "[ $symbol$branch ]($style)"
+style = "fg:purple"
+symbol = " "
+
+[git_status]
+format = "([($ahead_behind )](fg:blue)[$staged$modified$untracked$deleted$conflicted$stashed](fg:orange))"
+ahead = "↑$count"
+behind = "↓$count"
+staged = "+$count"
+modified = "✱"
+untracked = "?"
+deleted = "-$count"
+conflicted = "!"
+stashed = "\\$$count"
+
+[status]
+disabled = false
+format = "[ ✗ $status ](fg:red)"
+
+[python]
+format = "[($virtualenv )](fg:green)"
+
+[character]
+success_symbol = "[❯](fg:hl)"
+error_symbol = "[❯](fg:red)"
