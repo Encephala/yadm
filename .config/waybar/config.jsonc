@@ -182,10 +182,10 @@
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
-            "shutdown": "systemctl --user stop graphical-session.target && systemctl poweroff",
-            "reboot": "systemctl --user stop graphical-session.target && systemctl reboot",
-            "suspend": "systemctl suspend",
-            "logout": "systemctl --user stop graphical-session.target && hyprctl dispatch exit"
+            "shutdown": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && systemctl poweroff",
+            "reboot": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && systemctl reboot",
+            "logout": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && hyprctl dispatch exit",
+            "suspend": "hyprlock & sleep 0.5 && systemctl suspend"
         }
     }
 }
