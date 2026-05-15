@@ -176,7 +176,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "SINK=alsa_output.pci-0000_18_00.6.analog-stereo; PORT=$(pactl list sinks | awk '/Active Port/{print $3}'); if [ \"$PORT\" = 'analog-output-headphones' ]; then pactl set-sink-port \"$SINK\" analog-output-lineout; else pactl set-sink-port \"$SINK\" analog-output-headphones; fi",
+        "on-click": "~/.config/waybar/audio-toggle.sh",
         "on-click-right": "pavucontrol"
     },
     "custom/power": {
