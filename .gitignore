@@ -4,3 +4,6 @@
 
 # Hyprlock
 .config/hypr/hyprlock-local.conf
+
+# SSH
+.ssh/id*
