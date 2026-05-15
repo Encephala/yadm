@@ -13,7 +13,7 @@ PACMAN_PACKAGES=(
     neovim gcc npm unzip luarocks
 
     # Hyprland stack
-    hyprland waybar hyprlock hyprshot wireplumber brightnessctl playerctl
+    hyprland waybar hyprlock hyprshot wireplumber brightnessctl playerctl pavucontrol
 
     # Terminal & files
     kitty dolphin

@@ -174,7 +174,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "wpctl set-default $(wpctl status | sed -n '/Sinks:/,/^$/p' | awk '/Ryzen/ && !/\\*/ {print $2}; /CA0132/ && !/\\*/ {print $2}' | tr -d '.')"
+        "on-click": "wpctl set-default $(wpctl status | sed -n '/Sinks:/,/^$/p' | awk '/Ryzen/ && !/\\*/ {print $2}; /CA0132/ && !/\\*/ {print $2}' | tr -d '.')",
+        "on-click-right": "pavucontrol"
     },
     "custom/power": {
         "format" : "⏻",
