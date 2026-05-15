@@ -45,7 +45,7 @@ window#waybar {
 #battery,
 #cpu,
 #custom-gpu,
-#memory,
+#custom-memory,
 #temperature,
 #network,
 #pulseaudio,
@@ -70,7 +70,7 @@ window#waybar {
 /* Hardware Group Styling */
 #cpu { color: #b4f9f8; }
 #custom-gpu { color: #73daca; } /* Teal for GPU usage */
-#memory { color: #bb9af7; }
+#custom-memory { color: #bb9af7; }
 
 /* Temperature Styling */
 #temperature.cpu { 

@@ -29,7 +29,7 @@
         "modules": [
             "group/cpu-group",
             "group/gpu-group",
-            "memory"
+            "custom/memory"
         ]
     },
     "group/cpu-group": {
@@ -121,8 +121,10 @@
         "return-type": "json",
         "interval": 1
     },
-    "memory": {
-        "format": "{}% "
+    "custom/memory": {
+        "exec": "awk '/^MemTotal:/{t=$2} /^MemAvailable:/{a=$2} /^MemFree:/{f=$2} /^Buffers:/{b=$2} /^Cached:/{c=$2} /^SReclaimable:/{sr=$2} /^SwapCached:/{sc=$2} /^Active\\(anon\\):/{aa=$2} END { used=t-a; pct=int(used*100/t); cache=c+sr-sc; printf \"{\\\"text\\\": \\\"%d%% \uf538\\\", \\\"tooltip\\\": \\\"Active: %.1f GB\\\\nCached: %.1f GB\\\\nBuffers: %.1f GB\\\\nFree: %.1f GB\\\\n\\\\nUsed: %.1f / %.1f GB\\\"}\\n\", pct, aa/1048576, cache/1048576, b/1048576, f/1048576, used/1048576, t/1048576 }' /proc/meminfo",
+        "return-type": "json",
+        "interval": 2
     },
     "temperature#cpu": {
         "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
