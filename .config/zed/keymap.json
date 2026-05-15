@@ -1,0 +1,78 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "ctrl-shift-w": null,
+      "ctrl-k ctrl-s": null,
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-shift-up": "editor::DuplicateLineUp",
+      "alt-shift-down": "editor::DuplicateLineDown",
+      "ctrl-shift-w": "pane::CloseActiveItem",
+
+      "ctrl-k ctrl-s": "git::ToggleStaged",
+    },
+    "unbind": {
+      "ctrl-alt-left": "editor::MoveToPreviousSubwordStart",
+      "ctrl-alt-right": "editor::MoveToNextSubwordEnd",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-0": ["zed::ResetBufferFontSize", { "persist": false }],
+      "ctrl-f5": "workspace::Reload",
+      "ctrl-alt-left": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "left" },
+      ],
+      "ctrl-alt-right": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "right" },
+      ],
+      "ctrl-shift-e": "project_panel::Toggle",
+      "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-shift-b": "agent::Toggle",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-backspace": ["terminal::SendKeystroke", "ctrl-w"],
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-b": "vim::PageUp",
+    },
+  },
+  {
+    "context": "Editor && VimOperatorWithArg && !menu",
+    "bindings": {
+      "ctrl-w": "editor::DeleteToPreviousWordStart",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "unbind": {
+      "ctrl-w": "pane::CloseActiveItem",
+    },
+  },
+]
