@@ -176,7 +176,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "wpctl set-default $(wpctl status | sed -n '/Sinks:/,/^$/p' | awk '/Ryzen/ && !/\\*/ {print $2}; /CA0132/ && !/\\*/ {print $2}' | tr -d '.')",
+        "on-click": "SINK=alsa_output.pci-0000_18_00.6.analog-stereo; PORT=$(pactl list sinks | awk '/Active Port/{print $3}'); if [ \"$PORT\" = 'analog-output-headphones' ]; then pactl set-sink-port \"$SINK\" analog-output-lineout; else pactl set-sink-port \"$SINK\" analog-output-headphones; fi",
         "on-click-right": "pavucontrol"
     },
     "custom/power": {
