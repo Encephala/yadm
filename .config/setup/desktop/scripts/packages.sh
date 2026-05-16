@@ -7,7 +7,7 @@ sudo pacman -S --needed --noconfirm base-devel
 
 PACMAN_PACKAGES=(
     # Base
-    zsh git curl fzf jq htop less bc
+    zsh git curl fzf jq htop less bc wl-clipboard
 
     # Editor
     neovim gcc npm unzip luarocks
