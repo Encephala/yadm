@@ -68,9 +68,13 @@
         "show-special": true // This shows your "scratchpad" / special workspaces
     },
     "hyprland/window": {
-        "format": "{title}",
-        "max-length": 50,
-        "separate-outputs": true // Highly recommended for multi-monitor setups
+        "format": "{class}: {title}",
+        "max-length": 40,
+        "separate-outputs": false,
+        "icon": true,
+        "rewrite": {
+            "(.*) - Google Chrome": "$1"
+        }
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
