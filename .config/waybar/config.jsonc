@@ -3,7 +3,7 @@
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "output": "DP-1",
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 36, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -76,32 +76,6 @@
             "(.*) - Google Chrome": "$1"
         }
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -128,7 +102,7 @@
     "custom/memory": {
         "exec": "awk '/^MemTotal:/{t=$2} /^MemAvailable:/{a=$2} /^MemFree:/{f=$2} /^Buffers:/{b=$2} /^Cached:/{c=$2} /^SReclaimable:/{sr=$2} /^SwapCached:/{sc=$2} /^Active\\(anon\\):/{aa=$2} END { used=t-a; pct=int(used*100/t); cache=c+sr-sc; printf \"{\\\"text\\\": \\\"%d%% \uf538\\\", \\\"tooltip\\\": \\\"Active: %.1f GB\\\\nCached: %.1f GB\\\\nBuffers: %.1f GB\\\\nFree: %.1f GB\\\\n\\\\nUsed: %.1f / %.1f GB\\\"}\\n\", pct, aa/1048576, cache/1048576, b/1048576, f/1048576, used/1048576, t/1048576 }' /proc/meminfo",
         "return-type": "json",
-        "interval": 2
+        "interval": 1
     },
     "temperature#cpu": {
         "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
@@ -158,11 +132,12 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
+        "interval": 6,
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-ethernet": "󰈀 󰇚 {bandwidthDownBytes:>} 󰕒 {bandwidthUpBytes:>}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format": "{ifname} via {gwaddr} "
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
