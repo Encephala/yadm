@@ -73,6 +73,7 @@
         "separate-outputs": false,
         "icon": true,
         "rewrite": {
+            "^: $": "", // If no window active, show nothing
             "(.*) - Google Chrome": "$1"
         }
     },
