@@ -16,7 +16,7 @@ PACMAN_PACKAGES=(
     hyprland waybar hyprlock hyprshot wireplumber brightnessctl playerctl pavucontrol
 
     # Terminal & files
-    kitty dolphin
+    kitty dolphin starship zoxide diff-so-fancy
 
     # Fonts
     ttf-cascadia-mono-nerd otf-font-awesome noto-fonts-emoji
@@ -25,7 +25,7 @@ PACMAN_PACKAGES=(
     rustup
 
     # Misc
-    zoxide age diff-so-fancy starship
+    age
 )
 
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
@@ -42,10 +42,10 @@ fi
 AUR_PACKAGES=(
     hyprlauncher
     hyprmod
-    gpu-usage-waybar-git
     synology-drive
     vesktop
     tree-sitter-cli
+    oh-my-zsh-git 
 )
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
@@ -53,3 +53,4 @@ yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 # ── Rust toolchain ────────────────────────────────────────────────────────────
 
 rustup default stable
+
