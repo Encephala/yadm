@@ -10,7 +10,7 @@ PACMAN_PACKAGES=(
     zsh git curl fzf jq htop less bc wl-clipboard
 
     # Editor
-    neovim gcc npm unzip luarocks
+    neovim gcc npm unzip luarocks zeditor obsidian zed
 
     # Hyprland stack
     hyprland waybar hyprlock hyprshot wireplumber brightnessctl playerctl pavucontrol
