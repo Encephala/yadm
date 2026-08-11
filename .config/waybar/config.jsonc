@@ -2,7 +2,7 @@
 {
     "include": [
         "./waybar-local.jsonc"
-    ]
+    ],
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 36, // Waybar height (to be removed for auto height)
