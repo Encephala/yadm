@@ -486,11 +486,14 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
     locked = true,
 })
 
--- TODO: put to laptop -local.conf
-
--- bindel = ,XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+
-
--- bindel = ,XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), {
+    repeating = true,
+    locked = true,
+})
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), {
+    repeating = true,
+    locked = true,
+})
 
 -- # Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), {
