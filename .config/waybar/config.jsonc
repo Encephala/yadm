@@ -169,7 +169,7 @@
         "menu-actions": {
             "shutdown": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && systemctl poweroff",
             "reboot": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && systemctl reboot",
-            "logout": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && hyprctl eval 'hl.dispatch(hl.dsp.session.exit())'",
+            "logout": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && hyprctl eval 'hl.dispatch(hl.dsp.exit())'",
             "suspend": "systemctl suspend"
         }
     }
