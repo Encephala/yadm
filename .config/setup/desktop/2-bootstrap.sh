@@ -15,6 +15,9 @@ bash "$SCRIPT_DIR/scripts/neovim.sh"
 echo "==> fonts"
 bash "$SCRIPT_DIR/scripts/fonts.sh"
 
+echo "==> sddm"
+bash "$SCRIPT_DIR/scripts/sddm.sh"
+
 # ── Manual steps ──────────────────────────────────────────────────────────────
 
 cat <<'EOF'

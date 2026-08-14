@@ -45,7 +45,8 @@ AUR_PACKAGES=(
     synology-drive
     vesktop
     tree-sitter-cli
-    oh-my-zsh-git 
+    oh-my-zsh-git
+    sddm-theme-tokyo-night-git
 )
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"

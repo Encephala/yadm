@@ -15,7 +15,8 @@ Scripts live in `desktop/` (tracked by yadm). Static config files belong in yadm
         ├── packages.sh     # pacman + yay installs, rustup
         ├── shell.sh        # Oh My Zsh, chsh to zsh
         ├── neovim.sh       # Clone kickstart.nvim, install plugins headlessly
-        └── fonts.sh        # Write /etc/fonts/local.conf (uses sudo), fc-cache
+        ├── fonts.sh        # Write /etc/fonts/local.conf (uses sudo), fc-cache
+        └── sddm.sh         # Write /etc/sddm.conf.d/theme.conf (uses sudo)
 ```
 
 ## Bootstrap flow (new machine)
@@ -78,6 +79,9 @@ Runs pre-reboot from the archinstall environment. Takes `<device>` and `<luks-uu
 ### fonts.sh
 1. Write `/etc/fonts/local.conf` with CaskaydiaMono Nerd Font as monospace default (sudo)
 2. `fc-cache -f`
+
+### sddm.sh
+1. Write `/etc/sddm.conf.d/theme.conf` setting `Current=tokyo-night` (sudo)
 
 ## Manual steps (printed by 2-bootstrap.sh at the end)
 
