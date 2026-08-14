@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "==> system update"
 sudo pacman -Syu --noconfirm
+which yay >/dev/null && yay -Syu --noconfirm
 
 for script in "$SCRIPT_DIR"/scripts/*.sh; do
     name="$(basename "$script" .sh)"
