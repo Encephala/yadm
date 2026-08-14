@@ -167,10 +167,10 @@
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
-            "shutdown": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && systemctl poweroff",
-            "reboot": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && systemctl reboot",
-            "logout": "hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} && sleep 1 && hyprctl dispatch exit",
-            "suspend": "hyprlock & sleep 0.5 && systemctl suspend"
+            "shutdown": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && systemctl poweroff",
+            "reboot": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && systemctl reboot",
+            "logout": "hyprctl eval 'for _, w in ipairs(hl.get_windows()) do hl.dispatch(hl.dsp.window.close({window = w})) end' && until [ \"$(hyprctl clients -j)\" = \"[]\" ]; do sleep 0.05; done && hyprctl eval 'hl.dispatch(hl.dsp.session.exit())'",
+            "suspend": "systemctl suspend"
         }
     }
 }
