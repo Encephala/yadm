@@ -6,20 +6,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "==> system update"
 sudo pacman -Syu --noconfirm
 
-echo "==> packages"
-bash "$SCRIPT_DIR/scripts/packages.sh"
-
-echo "==> shell"
-bash "$SCRIPT_DIR/scripts/shell.sh"
-
-echo "==> neovim"
-bash "$SCRIPT_DIR/scripts/neovim.sh"
-
-echo "==> fonts"
-bash "$SCRIPT_DIR/scripts/fonts.sh"
-
-echo "==> sddm"
-bash "$SCRIPT_DIR/scripts/sddm.sh"
+for script in "$SCRIPT_DIR"/scripts/*.sh; do
+    name="$(basename "$script" .sh)"
+    name="${name#*-}"
+    echo "==> $name"
+    bash "$script"
+done
 
 # ── Manual steps ──────────────────────────────────────────────────────────────
 

@@ -12,11 +12,11 @@ Scripts live in `desktop/` (tracked by yadm). Static config files belong in yadm
     ├── 1-post-install.sh   # Run from archinstall env before reboot — LUKS/TPM, GRUB, mkinitcpio
     ├── 2-bootstrap.sh      # Entry point — calls all scripts/ in order, prints manual steps at end
     └── scripts/
-        ├── packages.sh     # pacman + yay installs, rustup
-        ├── shell.sh        # Oh My Zsh, chsh to zsh
-        ├── neovim.sh       # Clone kickstart.nvim, install plugins headlessly
-        ├── fonts.sh        # Write /etc/fonts/local.conf (uses sudo), fc-cache
-        └── sddm.sh         # Write /etc/sddm.conf.d/theme.conf (uses sudo)
+        ├── 1-packages.sh   # pacman + yay installs, rustup
+        ├── 2-shell.sh      # Oh My Zsh, chsh to zsh
+        ├── 3-neovim.sh     # Clone kickstart.nvim, install plugins headlessly
+        ├── 4-fonts.sh      # Write /etc/fonts/local.conf (uses sudo), fc-cache
+        └── 5-sddm.sh       # Write /etc/sddm.conf.d/theme.conf (uses sudo)
 ```
 
 ## Bootstrap flow (new machine)
@@ -61,26 +61,26 @@ Runs pre-reboot from the archinstall environment. Takes `<device>` and `<luks-uu
 3. `grub-mkconfig`
 4. Rewrite HOOKS in `/etc/mkinitcpio.conf` to the systemd-based set, then `mkinitcpio -P`
 
-### packages.sh
+### 1-packages.sh
 1. Install `base-devel` via pacman (needed to build yay)
 2. Clone and build yay from AUR (`https://aur.archlinux.org/yay.git`)
 3. `pacman -S` all pacman packages
 4. `yay -S` all AUR packages
 5. `rustup default stable`
 
-### shell.sh
+### 2-shell.sh
 1. Install Oh My Zsh via upstream script (unattended, to `~/.oh-my-zsh`)
 2. `chsh -s /usr/bin/zsh`
 
-### neovim.sh
+### 3-neovim.sh
 1. Clone `https://github.com/Encephala/kickstart.nvim` into `~/.config/nvim`
 2. Run `nvim --headless "+Lazy! sync" +qa` to install plugins
 
-### fonts.sh
+### 4-fonts.sh
 1. Write `/etc/fonts/local.conf` with CaskaydiaMono Nerd Font as monospace default (sudo)
 2. `fc-cache -f`
 
-### sddm.sh
+### 5-sddm.sh
 1. Write `/etc/sddm.conf.d/theme.conf` setting `Current=tokyo-night` (sudo)
 
 ## Manual steps (printed by 2-bootstrap.sh at the end)
