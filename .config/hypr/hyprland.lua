@@ -1,6 +1,7 @@
 local var_mainMod = "SUPER"
 local var_terminal = "kitty"
 local var_fileManager = "dolphin"
+local var_chrome = "google-chrome-stable"
 local var_menu = "hyprlauncher"
 
 -- #######################################################################################
@@ -412,6 +413,7 @@ hl.gesture({
 hl.bind(var_mainMod .. " + Q", hl.dsp.exec_cmd(var_terminal))
 hl.bind(var_mainMod .. " + C", hl.dsp.window.close())
 hl.bind(var_mainMod .. " + M", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(var_mainMod .. " + W", hl.dsp.exec_cmd(var_chrome))
 hl.bind(var_mainMod .. " + E", hl.dsp.exec_cmd(var_fileManager))
 hl.bind(var_mainMod .. " + space", hl.dsp.exec_cmd(var_menu))
 hl.bind(var_mainMod .. " + S", hl.dsp.layout("togglesplit"))
@@ -551,3 +553,6 @@ pcall(require, "hyprland-gui")
 
 -- Device-specific settings
 pcall(require, "hyprland-local")
+
+-- HyprMod managed settings
+require("hyprland-gui")
