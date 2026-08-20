@@ -351,7 +351,7 @@ hl.bind(var_mainMod .. " + SHIFT + equal", hl.dsp.layout("splitratio +0.1"))
 hl.bind(var_mainMod .. " + minus", hl.dsp.layout("splitratio -0.1"))
 hl.bind(var_mainMod .. " + P", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(var_mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
-hl.bind(var_mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(var_mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
 -- Switch workspaces with mainMod + [0-9]
 hl.bind(var_mainMod .. " + 1", hl.dsp.focus({ workspace = 1 }))
