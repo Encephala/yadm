@@ -127,6 +127,12 @@ hl.config({
     },
 })
 
+hl.config({
+    cursor = {
+        no_warps = true,
+    },
+})
+
 -- https://wiki.hypr.land/Configuring/Variables/#animations
 hl.config({
     animations = {
