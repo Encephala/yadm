@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ── Packages ──────────────────────────────────────────────────────────────────
+
+yay -S --needed --noconfirm sddm-theme-tokyo-night-git
+
 # ── SDDM: set tokyo-night as the active theme ──────────────────────────────────
 
 sudo mkdir -p /etc/sddm.conf.d

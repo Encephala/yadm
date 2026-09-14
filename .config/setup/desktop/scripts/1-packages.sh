@@ -7,19 +7,16 @@ sudo pacman -S --needed --noconfirm base-devel
 
 PACMAN_PACKAGES=(
     # Base
-    zsh git curl fzf jq htop less bc wl-clipboard
+    git curl fzf jq htop less bc wl-clipboard
 
     # Editor
-    neovim gcc npm unzip luarocks obsidian zed
+    obsidian zed
 
     # Hyprland stack
     hyprland waybar hyprlock hypridle hyprshot wireplumber brightnessctl playerctl pavucontrol
 
     # Terminal & files
     kitty dolphin starship zoxide diff-so-fancy
-
-    # Fonts
-    ttf-cascadia-mono-nerd otf-font-awesome noto-fonts-emoji
 
     # Rust
     rustup
@@ -40,13 +37,9 @@ if ! command -v yay &>/dev/null; then
 fi
 
 AUR_PACKAGES=(
-    walker elephant elephant-desktopapplications elephant-calc elephant-menus
     hyprmod
     synology-drive
     vesktop
-    tree-sitter-cli
-    oh-my-zsh-git
-    sddm-theme-tokyo-night-git
 )
 
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"

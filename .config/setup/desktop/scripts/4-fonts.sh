@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ── Packages ──────────────────────────────────────────────────────────────────
+
+sudo pacman -S --needed --noconfirm ttf-cascadia-mono-nerd otf-font-awesome noto-fonts-emoji
+
 # ── Fontconfig: set CaskaydiaMono Nerd Font as monospace default ──────────────
 
 sudo tee /etc/fonts/local.conf > /dev/null <<'EOF'
