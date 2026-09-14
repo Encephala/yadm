@@ -2,7 +2,7 @@ local var_mainMod = "SUPER"
 local var_terminal = "kitty"
 local var_fileManager = "dolphin"
 local var_chrome = "google-chrome-stable"
-local var_menu = "hyprlauncher"
+local var_menu = "walker"
 
 -- ###############
 -- ## MONITORS ###

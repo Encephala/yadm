@@ -40,7 +40,7 @@ if ! command -v yay &>/dev/null; then
 fi
 
 AUR_PACKAGES=(
-    hyprlauncher
+    walker elephant elephant-desktopapplications elephant-calc elephant-menus
     hyprmod
     synology-drive
     vesktop

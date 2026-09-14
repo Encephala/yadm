@@ -1,0 +1,43 @@
+force_keyboard_focus = false
+close_when_open = true
+click_to_close = true
+as_window = false
+single_click_activation = true
+selection_wrap = true
+theme = "tokyo-night"
+disable_mouse = false
+page_jump_items = 10
+resume_last_query = false
+ext_background_effect_blur = true # ask the compositor to blur behind walker; also add a hyprland layerrule (see notes)
+
+[shell]
+exclusive_zone = -1
+layer = "overlay"
+
+[placeholders]
+"default" = { input = "Search apps, run =calc, or find a zed workspace", list = "No Results" }
+
+[keybinds]
+close = ["Escape"]
+next = ["Down"]
+previous = ["Up"]
+toggle_exact = ["ctrl e"]
+quick_activate = ["F1", "F2", "F3", "F4"]
+
+[providers]
+# queried by default with no prefix: apps, calculator, and the zed workspaces menu
+default = ["desktopapplications", "calc", "menus:zed-workspaces"]
+empty = ["desktopapplications"]
+max_results = 50
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = "/"
+provider = "files"
+
+[[providers.prefixes]]
+prefix = "z "
+provider = "menus:zed-workspaces"
