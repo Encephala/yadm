@@ -15,7 +15,7 @@ exclusive_zone = -1
 layer = "overlay"
 
 [placeholders]
-"default" = { input = "Search apps, run =calc, or find a zed workspace", list = "No Results" }
+"default" = { input = "Search apps, games, run =calc, or find a zed workspace", list = "No Results" }
 
 [keybinds]
 close = ["Escape"]
@@ -25,9 +25,9 @@ toggle_exact = ["ctrl e"]
 quick_activate = ["F1", "F2", "F3", "F4"]
 
 [providers]
-# queried by default with no prefix: apps, calculator, and the zed workspaces menu
-default = ["desktopapplications", "calc", "menus:zed-workspaces"]
-empty = ["desktopapplications"]
+# queried by default with no prefix: apps, calculator, zed workspaces and steam games
+default = ["desktopapplications", "calc", "menus:zed-workspaces", "menus:steam-games"]
+empty = ["desktopapplications", "menus:zed-workspaces", "menus:steam-games"]
 max_results = 50
 
 [[providers.prefixes]]
@@ -41,3 +41,7 @@ provider = "files"
 [[providers.prefixes]]
 prefix = "z "
 provider = "menus:zed-workspaces"
+
+[[providers.prefixes]]
+prefix = "g "
+provider = "menus:steam-games"

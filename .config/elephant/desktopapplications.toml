@@ -1,0 +1,2 @@
+# sort by usage history even before typing (default only applies it to non-empty queries)
+history_when_empty = true
