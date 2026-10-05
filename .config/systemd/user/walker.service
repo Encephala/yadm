@@ -6,6 +6,3 @@ PartOf=graphical-session.target
 Environment=GSK_RENDERER=cairo
 ExecStart=/usr/bin/walker --gapplication-service
 Restart=on-failure
-
-[Install]
-WantedBy=default.target

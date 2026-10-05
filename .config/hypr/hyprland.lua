@@ -26,6 +26,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprlauncher -d")
     hl.exec_cmd("hypridle")
+    hl.exec_cmd("systemctl --user start elephant.service")
+    hl.exec_cmd("systemctl --user start walker.service")
 end)
 
 -- ############################

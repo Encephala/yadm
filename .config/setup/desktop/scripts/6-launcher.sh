@@ -7,5 +7,6 @@ yay -S --needed --noconfirm walker elephant elephant-desktopapplications elephan
 
 # ── Services ──────────────────────────────────────────────────────────────────
 
-systemctl --user enable --now elephant.service
-systemctl --user enable --now walker.service
+# elephant.service and walker.service are started from hyprland.lua's
+# hyprland.start hook, not enabled here: plain Hyprland never activates
+# graphical-session.target, and default.target starts before a display exists.

@@ -20,12 +20,12 @@ cat <<'EOF'
 
 Bootstrap complete. Manual steps remaining:
 
-  1. Hyprland local config — create ~/.config/hypr/hyprland-local.conf
+  1. Hyprland local config — create ~/.config/hypr/hyprland-local.lua
        (monitor layout, cursor size, touchpad, brightness keys — device-specific)
 
   2. Hyprlock local config — create ~/.config/hypr/hyprlock-local.conf
 
-  3. Hyprland GUI config — ~/.config/hypr/hyprland-gui.conf is managed by hyprmod,
+  3. Hyprland GUI config — ~/.config/hypr/hyprland-gui.lua is managed by hyprmod,
        generated automatically on first launch.
 
   4. Synology Drive — verify the service started; configure sync folders.
